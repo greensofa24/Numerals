@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Base Converter</title>
+</head>
+<body onchange="document.querySelector('span').innerText = parseInt(num, basefrom).toString(baseto).toUpperCase();">
+
+<script>
+basefrom = 2;
+baseto = 2;
+</script>
+<h1>Convert to another base</h1>
+<p>The minimum base is binary (base 2) and the maximum is hexatrigesimal (base 36)</p>
+<label>Convert</label>
+<input onchange="num = this.value;">
+<label id="label">From</label>
+<input id="input" style="display:none;" onchange="basefrom = this.value" onfocusout="if(!this.value) {
+this.style.display = 'none';
+document.getElementById('select').style.display = 'inline';
+document.getElementById('label').innerText = 'From';
+}">
+<select id="select" onchange="if(this.selectedOptions[0].value == 'other') {
+this.style.display = 'none';
+document.getElementById('input').style.display = 'inline';
+document.getElementById('input').focus();
+document.getElementById('option').selected = true;
+document.getElementById('label').innerText = 'From Base';
+} else {
+basefrom = this.selectedOptions[0].value;
+}">
+<option id="option" value="2">Binary</option>
+<option value="3">Ternary</option>
+<option value="6">Senary</option>
+<option value="8">Octal</option>
+<option value="10">Decimal</option>
+<option value="12">Dozenal</option>
+<option value="16">Hexadecimal</option>
+<option value="other">Other</option>
+</select>
+<label id="label2">To</label>
+<input id="input2" style="display:none;" onchange="baseto = this.value" onfocusout="if(!this.value) {
+this.style.display = 'none';
+document.getElementById('select2').style.display = 'inline';
+document.getElementById('label2').innerText = 'To';
+}">
+<select id="select2" onchange="if(this.selectedOptions[0].value == 'other') {
+this.style.display = 'none';
+document.getElementById('input2').style.display = 'inline';
+document.getElementById('input2').focus();
+document.getElementById('option2').selected = true;
+document.getElementById('label2').innerText = 'To Base';
+} else {
+baseto = this.selectedOptions[0].value;
+}">
+<option id="option2" value="2">Binary</option>
+<option value="3">Ternary</option>
+<option value="6">Senary</option>
+<option value="8">Octal</option>
+<option value="10">Decimal</option>
+<option value="12">Dozenal</option>
+<option value="16">Hexadecimal</option>
+<option value="other">Other</option>
+</select>
+<p>Output: <span></span></p>
+
+</body>
+</html>
